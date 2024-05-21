@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- le corps de la page d'accueil -->
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>    <!-- Pour modifier le message -->
+                <h1 class="mb-10"> Eden Cinéma <span class="text-warning"> 
+                    Un havre de culture pour tous les âges </span></h1>
+                <p class="lead my-4">
+                     <!-- Pour modifier la phrase d'accroche -->
+                    Venez au Cinéma Eden : Là où chaque génération trouve son film !
+                </p>
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block" src="{{url_for('static', filename='ima.jpeg')}}" alt="">
+        </div>
+    </div>
+</section>
+<!-- Films -->
+<section class="bg-ligh">
+    <div class="container p-5">
+        <h3 class="text-center text-secondary" id='learn'>ACTUELLEMENT A L'AFFICHE</h3>
+        <div class="row">
+            {% for film in films %}
+                        <!-- l'affichage des films selon l'ecran utilisé -->
+            <div class="col-sm-12 col-md-6 col-lg-4 p-3 d-flex align-items-stretch">
+                <a href="#film_title" class="text-decoration-none">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                        <!-- Pour les affiches/noms des films-->
+                            <img src="{{url_for('static', filename=film.poster)}}" alt="" class="card-img w-25">
+                            <h4 class="card-title mb-4">
+                                {{film.title}}
+
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+   
+{% endblock content %}
+
